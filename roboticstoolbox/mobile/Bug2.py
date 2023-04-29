@@ -9,6 +9,7 @@ Python Bug Planner
 # from spatialmath.pose2d import SE2
 from spatialmath import base
 from spatialmath.base.animate import *
+from spatialmath.base.vectors import *
 from scipy.ndimage import *
 # from matplotlib import cm
 import matplotlib.pyplot as plt
@@ -247,7 +248,7 @@ class Bug2(PlannerBase):
                 self.message(f"  {position}: crossed the M-line")
 
                 # are we closer than when we encountered the obstacle?
-                if base.norm(position - self._goal) < base.norm(self.H[-1] - self._goal):
+                if norm(position - self._goal) < norm(self.H[-1] - self._goal):
                     self._step = 1  # transition to step 1
                     self.message(f"  {position}: change to step 1")
                     return n
@@ -323,7 +324,7 @@ def edgelist(im, p, direction=1):
       IAPR Workshop on Machine Vision Applications Dec. 13-15, 1994, Kawasaki
 
     """
-    p = base.getvector(p, 2, dtype=int)
+    p = getvector(p, 2, dtype=int)
     
     if direction > 0:
         neighbours = np.arange(start=0, stop=8, step=1)
