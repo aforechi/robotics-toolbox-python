@@ -278,8 +278,8 @@ class BaseOccupancyGrid(BaseMap):
         to control the displayed color of free space and obstacles.
 
         """
-
-        ax = base.axes_logic(ax, 2)
+        if ax is None:
+            ax = base.axes_logic(ax, 2)
 
         if map is None:
             map = self._grid
